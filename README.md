@@ -1,5 +1,7 @@
 # *uRank* Notes
 
+![Screenshot](static/uRank.png)
+
 ### Outline
 
 * Fully written in [React.js](https://reactjs.org)
