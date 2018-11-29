@@ -25,3 +25,5 @@ chrome-user-data
 
 .next/
 scrapy-data/
+static/data.json
+
