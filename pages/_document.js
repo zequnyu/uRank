@@ -13,6 +13,7 @@ export default class MyDocument extends Document {
         return (
             <html>
             <Head>
+                <title>uRank</title>
                 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico|Montserrat:500" rel="stylesheet" />
                 {this.props.styleTags}
             </Head>
