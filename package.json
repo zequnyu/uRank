@@ -1,0 +1,29 @@
+{
+  "name": "urank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zequnyu/uRank.git"
+  },
+  "keywords": [],
+  "author": "zequnyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zequnyu/uRank/issues"
+  },
+  "homepage": "https://github.com/zequnyu/uRank#readme",
+  "dependencies": {
+    "next": "^7.0.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-modal": "^3.6.1",
+    "styled-components": "^4.1.2"
+  }
+}
