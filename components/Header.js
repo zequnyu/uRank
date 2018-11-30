@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
+import logoImg from '../static/logo.png'
+
 
 const StyledHeader = styled.div`
     display: flex;
@@ -59,11 +61,10 @@ const LinkText = styled.a`
 `;
 
 
-
 const Header = () => (
     <StyledHeader>
         <StyledHeaderLeft>
-            <Logo src="/static/logo.png" />
+            <Logo src={logoImg} />
         </StyledHeaderLeft>
         <StyledHeaderRight>
             <Title>uRank</Title>
