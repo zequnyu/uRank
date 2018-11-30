@@ -11,6 +11,6 @@ const AboutText = styled.div`
 
 export default () => (
     <Layout>
-        <AboutText>This is the about page.</AboutText>
+        <AboutText>About page under construction</AboutText>
     </Layout>
 )

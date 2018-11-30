@@ -12,6 +12,6 @@ const TrendingText = styled.div`
 
 export default () => (
     <Layout>
-        <TrendingText>Trending page under construction.</TrendingText>
+        <TrendingText>Trending page under construction</TrendingText>
     </Layout>
 )
