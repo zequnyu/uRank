@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import logoImg from '../static/logo.png'
+import logoImg from '../static/logo.jpg'
 
 
 const MyLayout = styled.div`

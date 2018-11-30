@@ -1,5 +1,7 @@
 # *uRank* Notes
 
+**I have to correct some of the data by hand so more universities will be added in the future**
+
 ![Screenshot](static/uRank.png)
 
 ### Outline
@@ -7,16 +9,14 @@
 * Fully written in [React.js](https://reactjs.org)
 * Using framework [Next.js](https://nextjs.org)
 * CSS styled by CSS-in-JS using [styled components](https://www.styled-components.com)
-* Typography using [Google Font](https://fonts.google.com/?selection.family=Open+Sans|Pacifico) *Open Sans* and *Pacifico*
+* Typography using [Google Font](https://fonts.google.com/?selection.family=Open+Sans|Pacifico) *Open Sans*, *Pacifico* and *Montserrat*
 * Data collection using Python [Scrapy](https://scrapy.org)
-* I have to correct some of the data by hand so more universities will be added in the future
 
 ### Tutorial
 
-* [Example](https://github.com/zeit/next.js/tree/master/examples/with-styled-components) for using *styled components* in *next.js*
+* [Example](https://github.com/zeit/next.js/tree/master/examples/with-styled-components) for using *styled components* in *Next.js*
 * CSS Flexbox Layout: [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/), [Flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
-
-
+* CSS Grid Layout: [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/), [Grids](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids)
 
 ### Data
 
