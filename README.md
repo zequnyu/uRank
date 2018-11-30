@@ -1,6 +1,6 @@
 # *uRank* Notes
 
-**I have to correct some of the data by hand so more universities will be added in the future**
+**NOTE: I have to correct some of the data by hand so more universities will be added in the future**
 
 ![Screenshot](static/uRank.png)
 
