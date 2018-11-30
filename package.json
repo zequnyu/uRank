@@ -21,6 +21,7 @@
   "homepage": "https://github.com/zequnyu/uRank#readme",
   "dependencies": {
     "next": "^7.0.2",
+    "next-images": "^1.0.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-modal": "^3.6.1",
