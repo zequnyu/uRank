@@ -39,8 +39,10 @@ const SelectModal = styled(OptionButtonBasis)`
 `;
 
 const OptionButton = styled(OptionButtonBasis)`
-    height: 80px;
-    width: 180px;
+    min-height: 60px;
+    min-width: 150px;
+    max-height: 80px;
+    max-width: 180px;
     border-radius: 5px;
     background-color: white;
     margin-bottom: 10px;
@@ -242,10 +244,10 @@ const OptionLabel = styled.span`
 
 const optionList = [
     { id: 'ave', label: 'Average'},
-    { id: 'qsave', label: 'QS Average'},
-    { id: 'usnewsave', label: 'US News Average'},
-    { id: 'timesave', label: 'Times Average'},
-    { id: 'arwuave', label: 'ARWU Average'},
+    { id: 'qsave', label: 'QS Ave'},
+    { id: 'usnewsave', label: 'US News Ave'},
+    { id: 'timesave', label: 'Times Ave'},
+    { id: 'arwuave', label: 'ARWU Ave'},
     { id: 'qs2019', label: 'QS - 2019' },
     { id: 'qs2018', label: 'QS - 2018' },
     { id: 'qs2017', label: 'QS - 2017' },
@@ -268,11 +270,6 @@ const optionList = [
     { id: 'arwu2015', label: 'ARWU - 2015' }
 ];
 
-const BoldArrow = styled.span`
-    font-weight: bold;
-    color: #e6e6e6;
-`;
-
 class PoppedModalTable extends React.Component {
     constructor(props) {
         super(props);
@@ -289,11 +286,11 @@ class PoppedModalTable extends React.Component {
                 {optionList.map(item => (
                     <OptionButton onClick={this.handleOptionClick} key={item.id} id={item.id}>{item.label}</OptionButton>
                 ))}
-                <OptionLabel id="avelabel">Average <BoldArrow>↙</BoldArrow></OptionLabel>
-                <OptionLabel id="qslabel">QS <BoldArrow>↙</BoldArrow></OptionLabel>
-                <OptionLabel id="usnewslabel">US News <BoldArrow>↙</BoldArrow></OptionLabel>
-                <OptionLabel id="timeslabel">Times <BoldArrow>↙</BoldArrow></OptionLabel>
-                <OptionLabel id="arwulabel">ARWU <BoldArrow>↙</BoldArrow></OptionLabel>
+                <OptionLabel id="avelabel">· Average</OptionLabel>
+                <OptionLabel id="qslabel">· QS</OptionLabel>
+                <OptionLabel id="usnewslabel">· US News</OptionLabel>
+                <OptionLabel id="timeslabel">· Times</OptionLabel>
+                <OptionLabel id="arwulabel">· ARWU</OptionLabel>
             </ModalTable>
         )
     }
