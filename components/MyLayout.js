@@ -115,20 +115,20 @@ const Layout = (props) => (
                     <Title>uRank</Title>
                     <NavBar>
                         <Link href="/">
-                            <LinkText>Ranking</LinkText>
+                            <LinkText><i className="fas fa-chart-bar" />Ranking</LinkText>
                         </Link>
                         <Link href="/trending">
-                            <LinkText>Trending</LinkText>
+                            <LinkText><i className="fas fa-chart-line" />Trending</LinkText>
                         </Link>
                         <Link href="/about">
-                            <LinkText>About</LinkText>
+                            <LinkText><i className="fas fa-info-circle" />About</LinkText>
                         </Link>
                     </NavBar>
                 </StyledHeaderRight>
             </StyledHeader>
         </Header>
         {props.children}
-        <Footer><LogoLabel>uRank</LogoLabel> collected with ❤️ by <NameLink href="mailto:zequnyu11@gmail.com">Zequn Yu️</NameLink>.</Footer>
+        <Footer><LogoLabel>uRank</LogoLabel> developed with ❤️ by <NameLink href="https://github.com/zequnyu/uRank">Zequn Yu️</NameLink>.</Footer>
     </MyLayout>
 );
 
