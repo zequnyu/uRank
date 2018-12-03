@@ -3,6 +3,7 @@ import Layout from '../components/MyLayout.js'
 import inputData from '../static/data.json'
 import ReactModal from 'react-modal';
 
+// ---- Menu Area ----
 
 const SelectionMenu = styled.div`
     margin-top: 50px;
@@ -36,16 +37,6 @@ const OptionButtonBasis = styled.button`
 
 const SelectModal = styled(OptionButtonBasis)`
     width: 80%;
-`;
-
-const OptionButton = styled(OptionButtonBasis)`
-    min-height: 60px;
-    min-width: 150px;
-    max-height: 80px;
-    max-width: 180px;
-    border-radius: 5px;
-    background-color: white;
-    margin-bottom: 10px;
 `;
 
 const SelectionMenuRight = styled.div`
@@ -85,6 +76,56 @@ const MenuPageLabel = styled.span`
     display: flex;
     align-items: center;
 `;
+
+class MySelectionMenu extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handlePageDecrease = this.handlePageDecrease.bind(this);
+        this.handlePageIncrease = this.handlePageIncrease.bind(this);
+        this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
+
+    handlePageDecrease() {
+        this.props.onPageNumberChange(this.props.pageNumber - 1);
+    }
+    handlePageIncrease() {
+        this.props.onPageNumberChange(this.props.pageNumber + 1);
+    }
+
+    handleOpenModal() {
+        this.props.onModalStateChange(true);
+    }
+
+    handleCloseModal(e) {
+        this.props.onModalStateChange(false);
+        this.props.onRankOptionChange(e.target.id);
+    }
+
+
+    render() {
+        return <SelectionMenu>
+            <SelectionMenuLeft>
+                <SelectModal onClick={this.handleOpenModal}>{optionList.find(x => x.id === this.props.rankOption).label}</SelectModal>
+                <ReactModal
+                    isOpen={this.props.modalState}
+                    contentLabel="uRank Menu"
+                    ariaHideApp={false}
+                    style={ModalStyles}
+                >
+                    <PoppedModalTable onOptionChange={this.handleCloseModal}/>
+                </ReactModal>
+            </SelectionMenuLeft>
+            <SelectionMenuRight>
+                <MenuButton onClick={this.handlePageDecrease}>&lt;</MenuButton>
+                <MenuPageLabel>{this.props.pageNumber+1}/{this.props.pageTotal}</MenuPageLabel>
+                <MenuButton onClick={this.handlePageIncrease}>&gt;</MenuButton>
+            </SelectionMenuRight>
+        </SelectionMenu>
+    }
+}
+
+// ---- Modal Area ----
 
 const ModalStyles = {
     overlay: {
@@ -242,6 +283,16 @@ const OptionLabel = styled.span`
     width: 80%;
 `;
 
+const OptionButton = styled(OptionButtonBasis)`
+    min-height: 60px;
+    min-width: 150px;
+    max-height: 80px;
+    max-width: 180px;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 10px;
+`;
+
 const optionList = [
     { id: 'ave', label: 'Average'},
     { id: 'qsave', label: 'QS Ave'},
@@ -296,55 +347,7 @@ class PoppedModalTable extends React.Component {
     }
 }
 
-
-class MySelectionMenu extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handlePageDecrease = this.handlePageDecrease.bind(this);
-        this.handlePageIncrease = this.handlePageIncrease.bind(this);
-        this.handleOpenModal = this.handleOpenModal.bind(this);
-        this.handleCloseModal = this.handleCloseModal.bind(this);
-    }
-
-    handlePageDecrease() {
-        this.props.onPageNumberChange(this.props.pageNumber - 1);
-    }
-    handlePageIncrease() {
-        this.props.onPageNumberChange(this.props.pageNumber + 1);
-    }
-
-    handleOpenModal() {
-        this.props.onModalStateChange(true);
-    }
-
-    handleCloseModal(e) {
-        this.props.onModalStateChange(false);
-        this.props.onRankOptionChange(e.target.id);
-    }
-
-
-    render() {
-        return <SelectionMenu>
-            <SelectionMenuLeft>
-                <SelectModal onClick={this.handleOpenModal}>{optionList.find(x => x.id === this.props.rankOption).label}</SelectModal>
-                <ReactModal
-                    isOpen={this.props.modalState}
-                    contentLabel="uRank Menu"
-                    ariaHideApp={false}
-                    style={ModalStyles}
-                >
-                    <PoppedModalTable onOptionChange={this.handleCloseModal}/>
-                </ReactModal>
-            </SelectionMenuLeft>
-            <SelectionMenuRight>
-                <MenuButton onClick={this.handlePageDecrease}>&lt;</MenuButton>
-                <MenuPageLabel>{this.props.pageNumber+1}/{this.props.pageTotal}</MenuPageLabel>
-                <MenuButton onClick={this.handlePageIncrease}>&gt;</MenuButton>
-            </SelectionMenuRight>
-        </SelectionMenu>
-    }
-}
-
+// ---- Table Area ----
 
 const Table = styled.table`
     margin: 20px auto;
