@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import Layout from '../components/MyLayout.js'
-import inputData from '../static/data.json'
 import ReactModal from 'react-modal';
+import Link from 'next/link'
+
 
 // ---- Menu Area ----
 
@@ -382,32 +383,39 @@ class TableContent extends React.Component {
     }
 
     render() {
-        let sortedData;
         let rankTd = this.props.rankOption;
 
-        sortedData = myData.slice().sort(function (a, b) {
+        let sortedData = this.props.data.slice().sort(function (a, b) {
             return (a[rankTd] - b[rankTd]);
         }).filter(item => item[rankTd] > 0).slice(this.props.pageNumber*15, this.props.pageNumber*15+15);
 
 
-        return <tbody>
-        <TableRow>
-            <TableHeader>Rank</TableHeader>
-            <TableHeader>Name</TableHeader>
-            <TableHeader>Region</TableHeader>
-        </TableRow>
-        {sortedData.map(item => (
-            <TableRow key={item.id}>
-                <td>{item[rankTd]}</td>
-                <td>{item.name}</td>
-                <td>{item.region}</td>
-            </TableRow>
-        ))}
-        </tbody>
+        return (
+            <tbody>
+                <TableRow>
+                    <TableHeader>Rank</TableHeader>
+                    <TableHeader>Name</TableHeader>
+                    <TableHeader>Region</TableHeader>
+                </TableRow>
+                {sortedData.map(item => (
+                    <Link
+                        as={`analysis/${item.id}`}
+                        href={`/analysis?id=${item.id}`}
+                        key={item.id}
+                    >
+                        <TableRow >
+                            <td>{item[rankTd]}</td>
+                            <td>{item.name}</td>
+                            <td>{item.region}</td>
+                        </TableRow>
+                    </Link>
+                ))}
+            </tbody>
+        );
     }
 }
 
-let myData = inputData.slice();
+// ---- Index Area ----
 
 class Index extends React.Component {
     constructor(props) {
@@ -421,31 +429,33 @@ class Index extends React.Component {
         this.handleModalChange = this.handleModalChange.bind(this);
         this.handleRankOptionChange = this.handleRankOptionChange.bind(this);
 
-        Index.initialiseMyData();
+        this.myData = this.props.input.slice();
+        this.initialiseMyData();
 
-        this.pageTotal = (myData.length % 15 === 0) ? parseInt(myData.length / 15) : parseInt(myData.length / 15)+1;
+        this.pageTotal = (this.myData.length % 15 === 0) ? parseInt(this.myData.length / 15) : parseInt(this.myData.length / 15)+1;
     }
 
-    static initialiseMyData() {
-        for (let i=0; i<inputData.length; i++) {
-            myData[i]['qsave'] = this.selectDataByRankTypeFromOneUniv(i, 'qs');
-            myData[i]['usnewsave'] = this.selectDataByRankTypeFromOneUniv(i, 'usnews');
-            myData[i]['timesave'] = this.selectDataByRankTypeFromOneUniv(i, 'times');
-            myData[i]['arwuave'] = this.selectDataByRankTypeFromOneUniv(i, 'arwu');
+    initialiseMyData() {
+        for (let i=0; i<this.props.input.length; i++) {
+            this.myData[i]['qsave'] = this.selectDataByRankTypeFromOneUniv(i, 'qs');
+            this.myData[i]['usnewsave'] = this.selectDataByRankTypeFromOneUniv(i, 'usnews');
+            this.myData[i]['timesave'] = this.selectDataByRankTypeFromOneUniv(i, 'times');
+            this.myData[i]['arwuave'] = this.selectDataByRankTypeFromOneUniv(i, 'arwu');
 
-            let allAve = [myData[i]['qsave'], myData[i]['usnewsave'], myData[i]['timesave'], myData[i]['arwuave']].filter(item => item > 0);
+            let allAve = [this.myData[i]['qsave'], this.myData[i]['usnewsave'], this.myData[i]['timesave'], this.myData[i]['arwuave']].filter(item => item > 0);
+
             //console.log(allAve);
-            myData[i]['ave'] = (allAve.length === 0) ? -1 : this.roundToTwo(allAve.reduce((t, c) => t + c, 0)*1.0/allAve.length);
+            this.myData[i]['ave'] = (allAve.length === 0) ? -1 : Index.roundToTwo(allAve.reduce((t, c) => t + c, 0)*1.0/allAve.length);
         }
     }
 
-    static selectDataByRankTypeFromOneUniv(index, rank) {
-        let partDataArray = Object.keys(inputData[index]).filter(key => key.includes(rank)).reduce((obj, key) => {
-            obj.push(inputData[index][key]);
+    selectDataByRankTypeFromOneUniv(index, rank) {
+        let partDataArray = Object.keys(this.props.input[index]).filter(key => key.includes(rank)).reduce((obj, key) => {
+            obj.push(this.props.input[index][key]);
             return obj
         }, []).filter(item => item > 0);
 
-        return (partDataArray.length === 0) ? -1 : this.roundToTwo(partDataArray.reduce((t, c) => t + c, 0)*1.0/partDataArray.length)
+        return (partDataArray.length === 0) ? -1 : Index.roundToTwo(partDataArray.reduce((t, c) => t + c, 0)*1.0/partDataArray.length)
     }
 
     static roundToTwo(num) {
@@ -479,12 +489,25 @@ class Index extends React.Component {
                 rankOption={this.state.rankOption}
             />
             <Table>
-                <TableContent pageNumber={this.state.pageNumber} rankOption={this.state.rankOption} />
+                <TableContent
+                    pageNumber={this.state.pageNumber}
+                    rankOption={this.state.rankOption}
+                    data={this.myData}
+                />
             </Table>
         </Layout>
     }
 }
 
+Index.getInitialProps = async function() {
+    const inputData = await import('../static/data.json');
+
+    //console.log('Data fetched');
+
+    return {
+        input: inputData.default
+    }
+};
 
 
 export default Index

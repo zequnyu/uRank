@@ -2,8 +2,9 @@ import Layout from '../components/MyLayout.js'
 import styled from 'styled-components'
 import Select from 'react-select'
 import Chart from 'chart.js';
+import {withRouter} from 'next/router'
 
-import logo from '../static/harward.png'
+import logo from '../static/itemlogo.png'
 
 
 const TrendingPage = styled.div`
@@ -25,7 +26,7 @@ const SelectArea = styled.div`
 
 const SelectDropDown = styled(Select)`
     font-family: 'Open Sans', sans-serif;
-    flex: 0 0 75%;
+    flex: 0 0 60%;
 `;
 
 const selectOptions = [
@@ -44,23 +45,34 @@ const AnalysisArea = styled.div`
 
 const AnalysisUp = styled.div`
     flex: 1;
-    padding: 15px;
-    //background-color: azure;
+    padding: 30px;
+    display: flex;
+    align-items: center;
 `;
 
 const LineChartCanvas = styled.canvas`
-    width: 100%;
 `;
 
 const RadarChartCanvas = styled.canvas`
-    width: 100%;
 `;
 
 const AnalysisDown = styled.div`
     flex: 1;
-    padding: 15px;
+    display: flex;
+    flex-flow: row nowrap;
+    
 `;
 
+const AnalysisDownLeft = styled.div`
+    flex: 3;
+    display: flex;
+    align-items: center;
+`;
+
+const AnalysisDownRight = styled.div`
+    flex: 1;
+    background-color: aliceblue;
+`;
 
 // ---- Dashboard Area ----
 
@@ -132,6 +144,7 @@ const DashboardDown = styled.div`
 const DashboardButton= styled.button`
     flex: 1 1 0;
     margin: 10px;
+    padding-left: 20px;
     
     border: 0;
     outline:0;
@@ -144,14 +157,13 @@ const DashboardButton= styled.button`
         background-color: #f2f2f2;
         cursor: pointer;
     }
-    text-align: center;
-    
+    text-align: start;
     
     width: 70%;
 `;
 
 
-class Trending extends React.Component {
+class Analysis extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -172,6 +184,13 @@ class Trending extends React.Component {
                     borderColor: "#8e5ea2",
                     fill: false
                 }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'AAAAAA'
+                },
+                //maintainAspectRatio: false
             }
         });
 
@@ -203,6 +222,8 @@ class Trending extends React.Component {
     }
 
     render() {
+        let item = this.props.item;
+
         return (
             <Layout>
                 <TrendingPage>
@@ -214,29 +235,36 @@ class Trending extends React.Component {
                     </SelectArea>
                     <AnalysisArea>
                         <AnalysisUp>
-                            <LineChartCanvas ref={node => (this.lineNode = node)}/>
+                            <LineChartCanvas
+                                ref={node => (this.lineNode = node)}
+                            />
                         </AnalysisUp>
                         <AnalysisDown>
-                            <RadarChartCanvas ref={node => this.radarNode = node}/>
+                            <AnalysisDownLeft>
+                                <RadarChartCanvas ref={node => this.radarNode = node}/>
+                            </AnalysisDownLeft>
+                            <AnalysisDownRight>
+                                dr
+                            </AnalysisDownRight>
                         </AnalysisDown>
                     </AnalysisArea>
                     <DashboardArea>
                         <DashboardUp>
-                            <DashboardLogo>#2.55</DashboardLogo>
+                            <DashboardLogo>#{item.ave}</DashboardLogo>
                             <DashboardLabel>
-                                <DashboardLabelName>Harward University</DashboardLabelName>
+                                <DashboardLabelName>{item.name}</DashboardLabelName>
                                 <DashboardLabelRegion>
-                                    <DashboardLocationIcon className="fas fa-map-marker-alt" /> United States
+                                    <DashboardLocationIcon className="fas fa-map-marker-alt" /> {item.region}
                                 </DashboardLabelRegion>
                             </DashboardLabel>
                         </DashboardUp>
                         <DashboardDown>
-                            <DashboardButton>Official Website</DashboardButton>
-                            <DashboardButton>Wiki</DashboardButton>
-                            <DashboardButton>QS Analysis</DashboardButton>
-                            <DashboardButton>US News Analysis</DashboardButton>
-                            <DashboardButton>Times Analysis</DashboardButton>
-                            <DashboardButton>ARWU Analysis</DashboardButton>
+                            <DashboardButton><i className="fas fa-university" /> Website</DashboardButton>
+                            <DashboardButton><i className="fas fa-angle-right" /> Wiki</DashboardButton>
+                            <DashboardButton><i className="fas fa-angle-right" /> QS</DashboardButton>
+                            <DashboardButton><i className="fas fa-angle-right" /> US News</DashboardButton>
+                            <DashboardButton><i className="fas fa-angle-right" /> Times</DashboardButton>
+                            <DashboardButton><i className="fas fa-angle-right" /> ARWU</DashboardButton>
                         </DashboardDown>
                     </DashboardArea>
                 </TrendingPage>
@@ -245,5 +273,13 @@ class Trending extends React.Component {
     }
 }
 
+Analysis.getInitialProps = async function(context) {
+    const id = context.query.id;
+    const inputData = await import('../static/data.json');
 
-export default Trending;
+    return {
+        item: inputData.default.find(x => x.id === Number(id))
+    }
+};
+
+export default withRouter(Analysis);
