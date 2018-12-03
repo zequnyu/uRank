@@ -4,11 +4,11 @@ import Select from 'react-select'
 import Chart from 'chart.js';
 import {withRouter} from 'next/router'
 
-import logo from '../static/itemlogo.png'
+import logo from '../static/harward.png'
 
 
 const TrendingPage = styled.div`
-    min-width: 550px;
+    min-width: 1000px;
     margin-top: 50px;
     display: grid;
     grid-template-rows: repeat(9, minmax(100px, 1fr));
@@ -28,10 +28,6 @@ const SelectDropDown = styled(Select)`
     font-family: 'Open Sans', sans-serif;
     flex: 0 0 60%;
 `;
-
-const selectOptions = [
-    { value: '10001', label: 'Harvard University' },
-];
 
 
 // ---- Analysis Area ----
@@ -92,9 +88,9 @@ const DashboardUp = styled.div`
 `;
 
 const DashboardLogo = styled.div`
-    background: url(${logo}) no-repeat;
+    background: linear-gradient( rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ), url(${logo}) no-repeat;
     background-size: 100%;
-    color: transparent;    
+    color: white;    
     border-radius: 50%;
     width: 150px;
     height: 150px;
@@ -104,12 +100,11 @@ const DashboardLogo = styled.div`
     align-items: center;
     
     font-family: 'Pacifico', cursive;
-    font-size: 2.5em;
-    
-    &:hover {
-        color: #2A3132;
-        background-image: none;
-    }
+    font-size: 3em;
+`;
+
+const NumberSign = styled.span`
+    font-size: 0.6em;
 `;
 
 const DashboardLabel = styled.div`
@@ -188,7 +183,7 @@ class Analysis extends React.Component {
             options: {
                 title: {
                     display: true,
-                    text: 'AAAAAA'
+                    text: "Ranking Trend (2015 - 2019)"
                 },
                 //maintainAspectRatio: false
             }
@@ -215,7 +210,7 @@ class Analysis extends React.Component {
             options: {
                 title: {
                     display: true,
-                    text: 'Distribution in % of world population'
+                    text: "Yearly Ranking (2015 - 2019)"
                 }
             }
         });
@@ -229,7 +224,7 @@ class Analysis extends React.Component {
                 <TrendingPage>
                     <SelectArea>
                         <SelectDropDown
-                            options={selectOptions}
+                            options={this.props.options}
                             instanceId="mydropdown"
                         />
                     </SelectArea>
@@ -244,13 +239,13 @@ class Analysis extends React.Component {
                                 <RadarChartCanvas ref={node => this.radarNode = node}/>
                             </AnalysisDownLeft>
                             <AnalysisDownRight>
-                                dr
+                                Selected Years Ave Ranking
                             </AnalysisDownRight>
                         </AnalysisDown>
                     </AnalysisArea>
                     <DashboardArea>
                         <DashboardUp>
-                            <DashboardLogo>#{item.ave}</DashboardLogo>
+                            <DashboardLogo><NumberSign>#</NumberSign>2.1</DashboardLogo>
                             <DashboardLabel>
                                 <DashboardLabelName>{item.name}</DashboardLabelName>
                                 <DashboardLabelRegion>
@@ -277,7 +272,13 @@ Analysis.getInitialProps = async function(context) {
     const id = context.query.id;
     const inputData = await import('../static/data.json');
 
+    let selectOptions = inputData.default.reduce((obj, key) => {
+        obj.push({value: key['id'], label: key['name']});
+        return obj
+    }, []);
+
     return {
+        options: selectOptions,
         item: inputData.default.find(x => x.id === Number(id))
     }
 };
