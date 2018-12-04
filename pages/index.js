@@ -47,7 +47,7 @@ const SelectionMenuRight = styled.div`
     justify-content: center;
 `;
 
-const MenuButton = styled.button`
+const PageChangeButton = styled.button`
     margin-left: 20px;
     width: 45px;
     height: 45px;
@@ -57,15 +57,15 @@ const MenuButton = styled.button`
     font-family: 'Open Sans', sans-serif;
     font-size: 1.5em;
     font-weight: bold;
-    
+
     color: #2A3132;
     background-color: #e6e6e6;
-    text-align: center;
     &:hover {
         background-color: #f2f2f2;
         cursor: pointer;
     }
-    
+    padding: 0;
+    text-align: center;
 `;
 
 const MenuPageLabel = styled.span`
@@ -118,9 +118,9 @@ class MySelectionMenu extends React.Component {
                 </ReactModal>
             </SelectionMenuLeft>
             <SelectionMenuRight>
-                <MenuButton onClick={this.handlePageDecrease}>&lt;</MenuButton>
+                <PageChangeButton onClick={this.handlePageDecrease}>&lt;</PageChangeButton>
                 <MenuPageLabel>{this.props.pageNumber+1}/{this.props.pageTotal}</MenuPageLabel>
-                <MenuButton onClick={this.handlePageIncrease}>&gt;</MenuButton>
+                <PageChangeButton onClick={this.handlePageIncrease}>&gt;</PageChangeButton>
             </SelectionMenuRight>
         </SelectionMenu>
     }
@@ -145,7 +145,7 @@ const ModalTable = styled.div`
     justify-items: center;
     align-items: center; 
     grid-template-rows: repeat(10, 1fr);
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-gap: 20px 10px;
     
 
@@ -157,121 +157,141 @@ const ModalTable = styled.div`
         grid-row: 2;
         grid-column: 1;
     }
-    #qsave {
+    #ave2019 {
         grid-row: 2;
         grid-column: 2;
     }
-    #usnewsave {
+    #ave2018 {
         grid-row: 2;
         grid-column: 3;
     }
-    #timesave {
+    #ave2017 {
         grid-row: 2;
         grid-column: 4;
     }
-    #arwuave {
+    #ave2016 {
         grid-row: 2;
         grid-column: 5;
+    }
+    #ave2015 {
+        grid-row: 2;
+        grid-column: 6;
     }
     
     #qslabel {
         grid-row: 3;
         grid-column: 2/4;
     }
-    #qs2019 {
+    #qsave {
         grid-row: 4;
         grid-column: 1;
     }
-    #qs2018 {
+    #qs2019 {
         grid-row: 4;
         grid-column: 2;
     }
-    #qs2017 {
+    #qs2018 {
         grid-row: 4;
         grid-column: 3;
     }
-    #qs2016 {
+    #qs2017 {
         grid-row: 4;
         grid-column: 4;
     }
-    #qs2015 {
+    #qs2016 {
         grid-row: 4;
         grid-column: 5;
+    }
+    #qs2015 {
+        grid-row: 4;
+        grid-column: 6;
     }
     
     #usnewslabel {
         grid-row: 5;
         grid-column: 2/4;
     }
-    #usnews2019 {
+    #usnewsave {
         grid-row: 6;
         grid-column: 1;
     }
-    #usnews2018 {
+    #usnews2019 {
         grid-row: 6;
         grid-column: 2;
     }
-    #usnews2017 {
+    #usnews2018 {
         grid-row: 6;
         grid-column: 3;
     }
-    #usnews2016 {
+    #usnews2017 {
         grid-row: 6;
         grid-column: 4;
     }
-    #usnews2015 {
+    #usnews2016 {
         grid-row: 6;
         grid-column: 5;
+    }
+    #usnews2015 {
+        grid-row: 6;
+        grid-column: 6;
     }
     
     #timeslabel {
         grid-row: 7;
         grid-column: 2/4;
     }
-    #times2019 {
+    #timesave {
         grid-row: 8;
         grid-column: 1;
     }
-    #times2018 {
+    #times2019 {
         grid-row: 8;
         grid-column: 2;
     }
-    #times2017 {
+    #times2018 {
         grid-row: 8;
         grid-column: 3;
     }
-    #times2016 {
+    #times2017 {
         grid-row: 8;
         grid-column: 4;
     }
-    #times2015 {
+    #times2016 {
         grid-row: 8;
         grid-column: 5;
+    }
+    #times2015 {
+        grid-row: 8;
+        grid-column: 6;
     }
     
     #arwulabel {
         grid-row: 9;
         grid-column: 2/4;
     }
-    #arwu2019 {
+    #arwuave {
         grid-row: 10;
         grid-column: 1;
     }
-    #arwu2018 {
+    #arwu2019 {
         grid-row: 10;
         grid-column: 2;
     }
-    #arwu2017 {
+    #arwu2018 {
         grid-row: 10;
         grid-column: 3;
     }
-    #arwu2016 {
+    #arwu2017 {
         grid-row: 10;
         grid-column: 4;
     }
-    #arwu2015 {
+    #arwu2016 {
         grid-row: 10;
         grid-column: 5;
+    }
+    #arwu2015 {
+        grid-row: 10;
+        grid-column: 6;
     }
     
 `;
@@ -285,10 +305,8 @@ const OptionLabel = styled.span`
 `;
 
 const OptionButton = styled(OptionButtonBasis)`
-    min-height: 60px;
-    min-width: 150px;
-    max-height: 80px;
-    max-width: 180px;
+    width: 100%;
+    height: 100%;
     border-radius: 5px;
     background-color: white;
     margin-bottom: 10px;
@@ -296,6 +314,11 @@ const OptionButton = styled(OptionButtonBasis)`
 
 const optionList = [
     { id: 'ave', label: 'Average'},
+    { id: 'ave2019', label: 'Ave - 2019'},
+    { id: 'ave2018', label: 'Ave - 2018'},
+    { id: 'ave2017', label: 'Ave - 2017'},
+    { id: 'ave2016', label: 'Ave - 2016'},
+    { id: 'ave2015', label: 'Ave - 2015'},
     { id: 'qsave', label: 'QS Ave'},
     { id: 'usnewsave', label: 'US News Ave'},
     { id: 'timesave', label: 'Times Ave'},
@@ -420,32 +443,49 @@ class TableContent extends React.Component {
 class Index extends React.Component {
     constructor(props) {
         super(props);
+        this.initialiseMyData();
+
         this.state = {
             rankOption: "ave",
             pageNumber: 0,
-            showModal: false
+            showModal: false,
+            itemNumOnOnePage: 15,
+            pageTotal: this.initialisePageTotalNum()
         };
+
         this.handlePageNumberChange = this.handlePageNumberChange.bind(this);
         this.handleModalChange = this.handleModalChange.bind(this);
         this.handleRankOptionChange = this.handleRankOptionChange.bind(this);
+    }
 
-        this.myData = this.props.input.slice();
-        this.initialiseMyData();
+    initialisePageTotalNum() {
+        let len = this.dataWithAve.filter(item => item['ave'] > 0).length, num = 15;
+        return (len % num === 0) ? parseInt(len / num) : parseInt( len / num)+1;
+    }
 
-        this.pageTotal = (this.myData.length % 15 === 0) ? parseInt(this.myData.length / 15) : parseInt(this.myData.length / 15)+1;
+    updatePageTotalNum() {
+        let len = this.dataWithAve.filter(item => item[this.state.rankOption] > 0).length, num = this.state.itemNumOnOnePage;
+        return (len % num === 0) ? parseInt(len / num) : parseInt( len / num)+1;
     }
 
     initialiseMyData() {
+        this.dataWithAve = this.props.input.slice();
+
         for (let i=0; i<this.props.input.length; i++) {
-            this.myData[i]['qsave'] = this.selectDataByRankTypeFromOneUniv(i, 'qs');
-            this.myData[i]['usnewsave'] = this.selectDataByRankTypeFromOneUniv(i, 'usnews');
-            this.myData[i]['timesave'] = this.selectDataByRankTypeFromOneUniv(i, 'times');
-            this.myData[i]['arwuave'] = this.selectDataByRankTypeFromOneUniv(i, 'arwu');
+            this.dataWithAve[i]['qsave'] = this.selectDataByRankTypeFromOneUniv(i, 'qs');
+            this.dataWithAve[i]['usnewsave'] = this.selectDataByRankTypeFromOneUniv(i, 'usnews');
+            this.dataWithAve[i]['timesave'] = this.selectDataByRankTypeFromOneUniv(i, 'times');
+            this.dataWithAve[i]['arwuave'] = this.selectDataByRankTypeFromOneUniv(i, 'arwu');
 
-            let allAve = [this.myData[i]['qsave'], this.myData[i]['usnewsave'], this.myData[i]['timesave'], this.myData[i]['arwuave']].filter(item => item > 0);
+            this.dataWithAve[i]['ave2019'] = this.selectDataByRankTypeFromOneUniv(i, '2019');
+            this.dataWithAve[i]['ave2018'] = this.selectDataByRankTypeFromOneUniv(i, '2018');
+            this.dataWithAve[i]['ave2017'] = this.selectDataByRankTypeFromOneUniv(i, '2017');
+            this.dataWithAve[i]['ave2016'] = this.selectDataByRankTypeFromOneUniv(i, '2016');
+            this.dataWithAve[i]['ave2015'] = this.selectDataByRankTypeFromOneUniv(i, '2015');
 
-            //console.log(allAve);
-            this.myData[i]['ave'] = (allAve.length === 0) ? -1 : Index.roundToTwo(allAve.reduce((t, c) => t + c, 0)*1.0/allAve.length);
+            let allAve = [this.dataWithAve[i]['qsave'], this.dataWithAve[i]['usnewsave'], this.dataWithAve[i]['timesave'], this.dataWithAve[i]['arwuave']].filter(item => item > 0);
+
+            this.dataWithAve[i]['ave'] = (allAve.length === 0) ? -1 : Index.roundToTwo(allAve.reduce((t, c) => t + c, 0)*1.0/allAve.length);
         }
     }
 
@@ -463,10 +503,9 @@ class Index extends React.Component {
     }
 
     handlePageNumberChange(newPageNumber) {
-        if (newPageNumber < this.pageTotal && newPageNumber >= 0) {
+        if (newPageNumber < this.state.pageTotal && newPageNumber >= 0) {
             this.setState({pageNumber: newPageNumber});
         }
-
     }
 
     handleModalChange(newModalState) {
@@ -474,7 +513,10 @@ class Index extends React.Component {
     }
 
     handleRankOptionChange(newRankOption) {
-        this.setState({ rankOption: newRankOption});
+        // reset page number to head
+        this.setState({ pageNumber: 0 });
+        this.setState({ rankOption: newRankOption });
+        this.setState({ pageTotal: this.updatePageTotalNum() });
     }
 
     render() {
@@ -483,7 +525,7 @@ class Index extends React.Component {
                 onModalStateChange={this.handleModalChange}
                 modalState={this.state.showModal}
                 onPageNumberChange={this.handlePageNumberChange}
-                pageTotal = {this.pageTotal}
+                pageTotal = {this.state.pageTotal}
                 pageNumber={this.state.pageNumber}
                 onRankOptionChange={this.handleRankOptionChange}
                 rankOption={this.state.rankOption}
@@ -492,7 +534,7 @@ class Index extends React.Component {
                 <TableContent
                     pageNumber={this.state.pageNumber}
                     rankOption={this.state.rankOption}
-                    data={this.myData}
+                    data={this.dataWithAve}
                 />
             </Table>
         </Layout>
