@@ -161,22 +161,78 @@ const DashboardButton= styled.button`
 class Analysis extends React.Component {
     constructor(props) {
         super(props);
+        this.initialiseItemAve();
+
+        console.log(this.itemWithAve)
+    }
+
+    initialiseItemAve() {
+        this.itemWithAve = Object.assign({}, this.props.item);
+
+        this.itemWithAve['qsave'] = this.selectDataByTypeFromItem('qs');
+        this.itemWithAve['usnewsave'] = this.selectDataByTypeFromItem('usnews');
+        this.itemWithAve['timesave'] = this.selectDataByTypeFromItem('times');
+        this.itemWithAve['arwuave'] = this.selectDataByTypeFromItem('arwu');
+
+        this.itemWithAve['ave2019'] = this.selectDataByTypeFromItem('2019');
+        this.itemWithAve['ave2018'] = this.selectDataByTypeFromItem('2018');
+        this.itemWithAve['ave2017'] = this.selectDataByTypeFromItem('2017');
+        this.itemWithAve['ave2016'] = this.selectDataByTypeFromItem('2016');
+        this.itemWithAve['ave2015'] = this.selectDataByTypeFromItem('2015');
+
+        let allAve = [
+            this.itemWithAve['qsave'],
+            this.itemWithAve['usnewsave'],
+            this.itemWithAve['timesave'],
+            this.itemWithAve['arwuave']
+        ].filter(item => item > 0);
+
+        this.itemWithAve['ave'] = (allAve.length === 0) ? -1 : Analysis.roundToTwo(allAve.reduce((t, c) => t + c, 0)*1.0 / allAve.length);
+    }
+
+    selectDataByTypeFromItem(rank) {
+        let partDataArray = Object.keys(this.props.item).filter(key => key.includes(rank)).reduce((obj, key) => {
+            obj.push(this.props.item[key]);
+            return obj
+        }, []).filter(item => item > 0);
+
+        return (partDataArray.length === 0) ? -1 : Analysis.roundToTwo(partDataArray.reduce((t, c) => t + c, 0)*1.0/partDataArray.length)
+    }
+
+    static roundToTwo(num) {
+        return Math.round(num * 100) / 100;
     }
 
     componentDidMount() {
+        let d = this.itemWithAve;
         let lineChart = new Chart(this.lineNode, {
             type: 'line',
             data: {
                 labels: ["2015", "2016", "2017", "2018", "2019"],
                 datasets: [{
-                    data: [3,3,2,1,5],
+                    data: [d.ave2015, d.ave2016, d.ave2017, d.ave2018, d.ave2019],
                     label: "Average",
-                    borderColor: "#3e95cd",
+                    borderColor: "#4d648d",
                     fill: false
                 }, {
-                    data: [1,1,1,1,1],
+                    data: [d.qs2015, d.qs2016, d.qs2017, d.qs2018, d.qs2019],
                     label: "QS",
-                    borderColor: "#8e5ea2",
+                    borderColor: "#f4cc70",
+                    fill: false
+                }, {
+                    data: [d.usnews2015, d.usnews2016, d.usnews2017, d.usnews2018, d.usnews2019],
+                    label: "US News",
+                    borderColor: "#de7a22",
+                    fill: false
+                }, {
+                    data: [d.times2015, d.times2016, d.times2017, d.times2018, d.times2019],
+                    label: "Times",
+                    borderColor: "#f6abb6",
+                    fill: false
+                }, {
+                    data: [d.arwu2015, d.arwu2016, d.arwu2017, d.arwu2018, d.arwu2019],
+                    label: "ARWU",
+                    borderColor: "#6ab187",
                     fill: false
                 }]
             },
@@ -185,40 +241,77 @@ class Analysis extends React.Component {
                     display: true,
                     text: "Ranking Trend (2015 - 2019)"
                 },
-                //maintainAspectRatio: false
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            reverse: true,
+                        }
+                    }]
+                }
             }
         });
+
+        let d2019 = [d.ave2019, d.qs2019, d.usnews2019, d.times2019, d.arwu2019];
+        let d2018 = [d.ave2018, d.qs2018, d.usnews2018, d.times2018, d.arwu2018];
+        let d2017 = [d.ave2017, d.qs2017, d.usnews2017, d.times2017, d.arwu2017];
+        let d2016 = [d.ave2016, d.qs2016, d.usnews2016, d.times2016, d.arwu2016];
+        let d2015 = [d.ave2015, d.qs2015, d.usnews2015, d.times2015, d.arwu2015];
+
 
         let radarChart = new Chart(this.radarNode, {
             type: 'radar',
             data: {
                 labels: ["Average", "QS", "US News", "Times", "ARWU"],
                 datasets: [{
-                    label: "2017",
+                    label: "2019",
                     fill: true,
-                    backgroundColor: "rgba(179,181,198,0.2)",
-                    borderColor: "rgba(179,181,198,1)",
-                    data: [8.77,55.61,21.69,6.62,6.82]
+                    backgroundColor: "rgba(77, 100, 141, 0.2)",
+                    borderColor: "rgba(77, 100, 141, 1)",
+                    data: d2019
                 }, {
                     label: "2018",
                     fill: true,
-                    backgroundColor: "rgba(255,99,132,0.2)",
-                    borderColor: "rgba(255,99,132,1)",
-                    data: [25.48,54.16,7.61,8.06,4.45]
+                    backgroundColor: "rgba(244, 204, 112, 0.2)",
+                    borderColor: "rgba(244, 204, 112, 1)",
+                    data: d2018
+                }, {
+                    label: "2017",
+                    fill: true,
+                    backgroundColor: "rgba(222, 122, 34, 0.2)",
+                    borderColor: "rgba(222, 122, 34, 1)",
+                    data: d2017
+                }, {
+                    label: "2016",
+                    fill: true,
+                    backgroundColor: "rgba(246, 171, 182, 0.2)",
+                    borderColor: "rgba(246, 171, 182, 1)",
+                    data: d2016
+                }, {
+                    label: "2015",
+                    fill: true,
+                    backgroundColor: "rgba(106, 177, 135, 0.2)",
+                    borderColor: "rgba(106, 177, 135, 1)",
+                    data: d2015
                 }]
             },
             options: {
                 title: {
                     display: true,
                     text: "Yearly Ranking (2015 - 2019)"
+                },
+                scale: {
+                    ticks: {
+                        reverse: true,
+                        beginAtZero: false,
+                        min: 1,
+                        max: Math.max.apply(Math, [].concat.apply([], [d2019, d2018, d2017, d2016, d2015]))+30
+                    }
                 }
             }
         });
     }
 
     render() {
-        let item = this.props.item;
-
         return (
             <Layout>
                 <TrendingPage>
@@ -245,11 +338,11 @@ class Analysis extends React.Component {
                     </AnalysisArea>
                     <DashboardArea>
                         <DashboardUp>
-                            <DashboardLogo><NumberSign>#</NumberSign>2.1</DashboardLogo>
+                            <DashboardLogo><NumberSign>#</NumberSign>{this.itemWithAve.ave}</DashboardLogo>
                             <DashboardLabel>
-                                <DashboardLabelName>{item.name}</DashboardLabelName>
+                                <DashboardLabelName>{this.itemWithAve.name}</DashboardLabelName>
                                 <DashboardLabelRegion>
-                                    <DashboardLocationIcon className="fas fa-map-marker-alt" /> {item.region}
+                                    <DashboardLocationIcon className="fas fa-map-marker-alt" /> {this.itemWithAve.region}
                                 </DashboardLabelRegion>
                             </DashboardLabel>
                         </DashboardUp>

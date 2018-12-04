@@ -472,16 +472,16 @@ class Index extends React.Component {
         this.dataWithAve = this.props.input.slice();
 
         for (let i=0; i<this.props.input.length; i++) {
-            this.dataWithAve[i]['qsave'] = this.selectDataByRankTypeFromOneUniv(i, 'qs');
-            this.dataWithAve[i]['usnewsave'] = this.selectDataByRankTypeFromOneUniv(i, 'usnews');
-            this.dataWithAve[i]['timesave'] = this.selectDataByRankTypeFromOneUniv(i, 'times');
-            this.dataWithAve[i]['arwuave'] = this.selectDataByRankTypeFromOneUniv(i, 'arwu');
+            this.dataWithAve[i]['qsave'] = this.selectDataByTypeFromItem(i, 'qs');
+            this.dataWithAve[i]['usnewsave'] = this.selectDataByTypeFromItem(i, 'usnews');
+            this.dataWithAve[i]['timesave'] = this.selectDataByTypeFromItem(i, 'times');
+            this.dataWithAve[i]['arwuave'] = this.selectDataByTypeFromItem(i, 'arwu');
 
-            this.dataWithAve[i]['ave2019'] = this.selectDataByRankTypeFromOneUniv(i, '2019');
-            this.dataWithAve[i]['ave2018'] = this.selectDataByRankTypeFromOneUniv(i, '2018');
-            this.dataWithAve[i]['ave2017'] = this.selectDataByRankTypeFromOneUniv(i, '2017');
-            this.dataWithAve[i]['ave2016'] = this.selectDataByRankTypeFromOneUniv(i, '2016');
-            this.dataWithAve[i]['ave2015'] = this.selectDataByRankTypeFromOneUniv(i, '2015');
+            this.dataWithAve[i]['ave2019'] = this.selectDataByTypeFromItem(i, '2019');
+            this.dataWithAve[i]['ave2018'] = this.selectDataByTypeFromItem(i, '2018');
+            this.dataWithAve[i]['ave2017'] = this.selectDataByTypeFromItem(i, '2017');
+            this.dataWithAve[i]['ave2016'] = this.selectDataByTypeFromItem(i, '2016');
+            this.dataWithAve[i]['ave2015'] = this.selectDataByTypeFromItem(i, '2015');
 
             let allAve = [this.dataWithAve[i]['qsave'], this.dataWithAve[i]['usnewsave'], this.dataWithAve[i]['timesave'], this.dataWithAve[i]['arwuave']].filter(item => item > 0);
 
@@ -489,7 +489,7 @@ class Index extends React.Component {
         }
     }
 
-    selectDataByRankTypeFromOneUniv(index, rank) {
+    selectDataByTypeFromItem(index, rank) {
         let partDataArray = Object.keys(this.props.input[index]).filter(key => key.includes(rank)).reduce((obj, key) => {
             obj.push(this.props.input[index][key]);
             return obj
