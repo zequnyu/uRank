@@ -67,7 +67,28 @@ const AnalysisDownLeft = styled.div`
 
 const AnalysisDownRight = styled.div`
     flex: 1;
-    background-color: aliceblue;
+    font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-size: 12px;
+    color: #666;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: end;
+`;
+
+const AnalysisDownRightTitle = styled.span`
+    font-weight: bold;
+    margin-right: 20px;
+`;
+
+const AnalysisDownRightLabel = styled.span`
+    margin-right: 100px;
+    margin-top: 32px;
+    font-size: 10px;
+`;
+
+const AnalysisDownRightNum = styled.span`
+    font-size: 14px;
 `;
 
 // ---- Dashboard Area ----
@@ -163,7 +184,12 @@ class Analysis extends React.Component {
         super(props);
         this.initialiseItemAve();
 
-        console.log(this.itemWithAve)
+        //console.log(this.itemWithAve);
+        this.state = {
+            selectedYears: ['2019', '2018', '2017', '2016', '2015']
+        };
+
+        this.updateSelectedYears = this.updateSelectedYears.bind(this);
     }
 
     initialiseItemAve() {
@@ -258,7 +284,7 @@ class Analysis extends React.Component {
         let d2015 = [d.ave2015, d.qs2015, d.usnews2015, d.times2015, d.arwu2015];
 
 
-        let radarChart = new Chart(this.radarNode, {
+        this.radarChart = new Chart(this.radarNode, {
             type: 'radar',
             data: {
                 labels: ["Average", "QS", "US News", "Times", "ARWU"],
@@ -306,12 +332,73 @@ class Analysis extends React.Component {
                         min: 1,
                         max: Math.max.apply(Math, [].concat.apply([], [d2019, d2018, d2017, d2016, d2015]))+30
                     }
+                },
+                legend: {
+                    position: 'left',
+                    onClick: this.updateSelectedYears
                 }
             }
         });
     }
 
+    updateSelectedYears(e, legendItem) {
+        var index = legendItem.datasetIndex;
+        var ci = this.radarChart.chart;
+        var meta = ci.getDatasetMeta(index);
+
+        // See controller.isDatasetVisible comment
+        meta.hidden = meta.hidden === null? !ci.data.datasets[index].hidden : null;
+
+        // We hid a dataset ... rerender the chart
+        ci.update();
+
+        let newState = this.state.selectedYears.slice();
+        if (newState.includes(legendItem.text)) {
+            newState = newState.filter(x => x !== legendItem.text);
+        } else {
+            newState.push(legendItem.text)
+        }
+
+        this.setState({ selectedYears:newState });
+    }
+
+    calculateSeletedYearsLabel() {
+        let years = this.state.selectedYears;
+
+        let selectedAve = (years.length === 0) ? 0 : years.map(element => "ave" + element).reduce((total, key) => {
+            return total + this.itemWithAve[key];
+        }, 0) / years.length;
+
+        let selectedQS = (years.length === 0) ? 0 : years.map(element => "qs" + element).reduce((total, key) => {
+            return total + this.itemWithAve[key];
+        }, 0) / years.length;
+
+        let selectedUSNews = (years.length === 0) ? 0 : years.map(element => "usnews" + element).reduce((total, key) => {
+            return total + this.itemWithAve[key];
+        }, 0) / years.length;
+
+        let selectedTimes = (years.length === 0) ? 0 : years.map(element => "times" + element).reduce((total, key) => {
+            return total + this.itemWithAve[key];
+        }, 0) / years.length;
+
+        let selectedARWU = (years.length === 0) ? 0 : years.map(element => "arwu" + element).reduce((total, key) => {
+            return total + this.itemWithAve[key];
+        }, 0) / years.length;
+
+
+        return [
+            Analysis.roundToTwo(selectedAve),
+            Analysis.roundToTwo(selectedQS),
+            Analysis.roundToTwo(selectedUSNews),
+            Analysis.roundToTwo(selectedTimes),
+            Analysis.roundToTwo(selectedARWU),
+        ];
+    }
+
     render() {
+
+        let labels = this.calculateSeletedYearsLabel();
+
         return (
             <Layout>
                 <TrendingPage>
@@ -332,7 +419,22 @@ class Analysis extends React.Component {
                                 <RadarChartCanvas ref={node => this.radarNode = node}/>
                             </AnalysisDownLeft>
                             <AnalysisDownRight>
-                                Selected Years Ave Ranking
+                                <AnalysisDownRightTitle>Selected Years Ave Ranking</AnalysisDownRightTitle>
+                                <AnalysisDownRightLabel>
+                                    Ave <AnalysisDownRightNum>{labels[0]}</AnalysisDownRightNum>
+                                </AnalysisDownRightLabel>
+                                <AnalysisDownRightLabel>
+                                    QS <AnalysisDownRightNum>{labels[1]}</AnalysisDownRightNum>
+                                </AnalysisDownRightLabel>
+                                <AnalysisDownRightLabel>
+                                    US News <AnalysisDownRightNum>{labels[2]}</AnalysisDownRightNum>
+                                </AnalysisDownRightLabel>
+                                <AnalysisDownRightLabel>
+                                    Times <AnalysisDownRightNum>{labels[3]}</AnalysisDownRightNum>
+                                </AnalysisDownRightLabel>
+                                <AnalysisDownRightLabel>
+                                    ARWU <AnalysisDownRightNum>{labels[4]}</AnalysisDownRightNum>
+                                </AnalysisDownRightLabel>
                             </AnalysisDownRight>
                         </AnalysisDown>
                     </AnalysisArea>
