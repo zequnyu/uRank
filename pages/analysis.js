@@ -404,8 +404,22 @@ class Analysis extends React.Component {
                 <TrendingPage>
                     <SelectArea>
                         <SelectDropDown
+                            value={{value: this.itemWithAve.id, label: this.itemWithAve.name}}
                             options={this.props.options}
                             instanceId="mydropdown"
+                            placeholder="Select University..."
+                            onChange={(e)=>{
+                                window.location = '/analysis/'+e.value
+                            }}
+                            theme={(theme) => ({
+                                ...theme,
+                                borderRadius: '20px',
+                                colors: {
+                                    ...theme.colors,
+                                    primary25: '#f2f2f2',
+                                    primary: '#e6e6e6',
+                                },
+                            })}
                         />
                     </SelectArea>
                     <AnalysisArea>

@@ -117,8 +117,8 @@ const Layout = (props) => (
                         <Link href="/">
                             <LinkText><i className="fas fa-chart-bar" />Ranking</LinkText>
                         </Link>
-                        <Link href={`/trend`}>
-                            <LinkText><i className="fas fa-chart-line" />Trending</LinkText>
+                        <Link href={`/analysis/10001`}>
+                            <LinkText><i className="fas fa-chart-line" />Analysis</LinkText>
                         </Link>
                         <Link href={`/about`}>
                             <LinkText><i className="fas fa-info-circle" />About</LinkText>
