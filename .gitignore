@@ -25,5 +25,6 @@ chrome-user-data
 
 .next/
 scrapy-data/
+uRank.numbers
 static/data.json
 

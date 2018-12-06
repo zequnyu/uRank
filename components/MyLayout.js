@@ -117,7 +117,7 @@ const Layout = (props) => (
                         <Link href="/">
                             <LinkText><i className="fas fa-chart-bar" />Ranking</LinkText>
                         </Link>
-                        <Link href={`/analysis/10001`}>
+                        <Link href={`/analysis?id=10001`} as={`analysis/10001`} >
                             <LinkText><i className="fas fa-chart-line" />Analysis</LinkText>
                         </Link>
                         <Link href={`/about`}>

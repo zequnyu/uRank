@@ -365,23 +365,23 @@ class Analysis extends React.Component {
     calculateSeletedYearsLabel() {
         let years = this.state.selectedYears;
 
-        let selectedAve = (years.length === 0) ? 0 : years.map(element => "ave" + element).reduce((total, key) => {
+        let selectedAve = (years.length === 0) ? -1 : years.map(element => "ave" + element).reduce((total, key) => {
             return total + this.itemWithAve[key];
         }, 0) / years.length;
 
-        let selectedQS = (years.length === 0) ? 0 : years.map(element => "qs" + element).reduce((total, key) => {
+        let selectedQS = (years.length === 0) ? -1 : years.map(element => "qs" + element).reduce((total, key) => {
             return total + this.itemWithAve[key];
         }, 0) / years.length;
 
-        let selectedUSNews = (years.length === 0) ? 0 : years.map(element => "usnews" + element).reduce((total, key) => {
+        let selectedUSNews = (years.length === 0) ? -1 : years.map(element => "usnews" + element).reduce((total, key) => {
             return total + this.itemWithAve[key];
         }, 0) / years.length;
 
-        let selectedTimes = (years.length === 0) ? 0 : years.map(element => "times" + element).reduce((total, key) => {
+        let selectedTimes = (years.length === 0) ? -1 : years.map(element => "times" + element).reduce((total, key) => {
             return total + this.itemWithAve[key];
         }, 0) / years.length;
 
-        let selectedARWU = (years.length === 0) ? 0 : years.map(element => "arwu" + element).reduce((total, key) => {
+        let selectedARWU = (years.length === 0) ? -1 : years.map(element => "arwu" + element).reduce((total, key) => {
             return total + this.itemWithAve[key];
         }, 0) / years.length;
 
