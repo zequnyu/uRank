@@ -64,8 +64,8 @@ const LinkText = styled.a`
     font-size: 1.2em;
     color: #336B87;
     font-family: 'Open Sans', sans-serif;
+    transition: all 0.4s linear;
     &:hover {
-        text-decoration: underline;
         cursor: pointer;
         color: #90AFC5;
     }

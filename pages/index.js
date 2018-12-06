@@ -29,11 +29,13 @@ const OptionButtonBasis = styled.button`
     font-size: 1.2em;
     color: #2A3132;
     background-color: #e6e6e6;
+    text-align: center;
+    transition: background 0.4s linear;
+    
     &:hover {
         background-color: #f2f2f2;
         cursor: pointer;
     }
-    text-align: center;
 `;
 
 const SelectModal = styled(OptionButtonBasis)`
@@ -60,12 +62,16 @@ const PageChangeButton = styled.button`
 
     color: #2A3132;
     background-color: #e6e6e6;
+    
+    padding: 0;
+    text-align: center;
+    transition: background 0.4s linear;
+    
     &:hover {
         background-color: #f2f2f2;
         cursor: pointer;
     }
-    padding: 0;
-    text-align: center;
+    
 `;
 
 const MenuPageLabel = styled.span`
@@ -394,6 +400,9 @@ const TableRow = styled.tr`
     & > th, td {
         padding: 15px;
     }
+    
+    transition: background 0.2s linear;
+    
     &:nth-child(n+2):hover {
         background-color: #f2f2f2;
         cursor: pointer;
