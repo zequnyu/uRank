@@ -109,7 +109,8 @@ const DashboardUp = styled.div`
 `;
 
 const DashboardLogo = styled.div`
-    background: linear-gradient( rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ), url(${logo}) no-repeat;
+    background-color: darkgray;
+    //background: linear-gradient( rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ), url(${logo}) no-repeat;
     background-size: 100%;
     color: white;    
     border-radius: 50%;
@@ -150,8 +151,9 @@ const DashboardLabelRegion = styled.div`
 `;
 
 const DashboardDown = styled.div`
+    display: none;
     flex: 1;
-    display: flex;
+    //display: flex;
     flex-flow: column wrap;
     justify-content: space-evenly;
     align-items: center;
