@@ -1,5 +1,8 @@
 # [![Screenshot](static/readme0.png)](https://urank.now.sh)
 
+
+## Summary
+
 **uRank** is the all-in-one website to find rankings of your favourite global university, where you can find four most influential global rankings in the world:
 
 - [QS](https://www.topuniversities.com) (*QS World University Rankings*)
@@ -15,7 +18,8 @@ Also, to see the analysis charts of one university:
 
 ![Screenshot](static/readme2.gif)
 
-### Data
+
+## Data
 
 I am not able to find all the data from the ranking official websites. The data sources are listed below:
 
@@ -28,7 +32,8 @@ I am not able to find all the data from the ranking official websites. The data 
 
 **NOTE: I have to correct some of the data by hand so more universities will be added in the future**
 
-### Technology Stack Outline
+
+## Technology Stack Outline
 
 * Fully written in [React.js](https://reactjs.org)
 * Using framework [Next.js](https://nextjs.org)
