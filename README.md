@@ -1,4 +1,4 @@
-#[![Screenshot](static/readme0.png)](https://urank.now.sh)
+# [![Screenshot](static/readme0.png)](https://urank.now.sh)
 
 **uRank** is the all-in-one website to find rankings of your favourite global university, where you can find four most influential global rankings in the world:
 
@@ -15,8 +15,6 @@ Also, to see the analysis charts of one university:
 
 ![Screenshot](static/readme2.gif)
 
----
-
 ### Data
 
 I am not able to find all the data from the ranking official websites. The data sources are listed below:
@@ -29,8 +27,6 @@ I am not able to find all the data from the ranking official websites. The data 
 * Times Ranking 2015-2019: [THE official website](https://www.timeshighereducation.com/world-university-rankings/2019/world-ranking#!/page/0/length/25/sort_by/rank/sort_order/asc/cols/stats)
 
 **NOTE: I have to correct some of the data by hand so more universities will be added in the future**
-
----
 
 ### Technology Stack Outline
 
