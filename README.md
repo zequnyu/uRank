@@ -1,9 +1,9 @@
-# [![Screenshot](static/readme0.png)](https://urank.now.sh)
+# [![Screenshot](static/readme0.png)](https://urank.zequnyu.com)
 
 
 ### Summary
 
-**uRank** is the all-in-one website to find rankings of your favourite global university, where you can find four most influential global rankings in the world:
+**[uRank](https://urank.zequnyu.com)** is the all-in-one website to find rankings of your favourite global university, where you can find four most influential global rankings in the world:
 
 - [QS](https://www.topuniversities.com) (*QS World University Rankings*)
 - [US News](https://www.usnews.com/education/best-global-universities) (*Best Global University Ranking*)
