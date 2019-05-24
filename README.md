@@ -1,5 +1,12 @@
 # [![Screenshot](static/readme0.png)](https://urank.now.sh)
 
+#### Update Plan 
+- [ ] Update data for year 2020.
+- [ ] Will use mongoDB instead of local JSON file for DB.
+- [ ] Will change the domain to Netlify. (Next is good, but now.sh performance is disastrous and I don't know why)
+- [ ] Will add more universities to the DB (now 150 target 200)
+- [ ] UI using Bulma.
+- [ ] Maybe rewrite to use React hooks.
 
 ### Summary
 
