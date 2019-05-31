@@ -6,7 +6,6 @@
 - [ ] Will change the domain to Netlify. (Next is good, but now.sh performance is disastrous and I don't know why)
 - [ ] Will add more universities to the DB (now 150 target 200)
 - [ ] UI using Bulma.
-- [ ] Maybe rewrite to use React hooks.
 
 ### Summary
 
