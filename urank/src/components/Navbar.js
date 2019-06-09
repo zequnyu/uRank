@@ -22,7 +22,6 @@ class Navbar extends React.Component {
     }
 
     render() {
-        console.log(this.state.burgerActive);
         return (
             <nav className="navbar is-light is-fixed-top">
                 <div className="container">
@@ -35,20 +34,26 @@ class Navbar extends React.Component {
                               data-target="navbarMenuHeroA"
                               onClick={this.handleBurgerClick}
                         >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
+                            <span/>
+                            <span/>
+                            <span/>
+                        </span>
                     </div>
                     <div id="navbarMenuHeroA"
                          className={this.state.burgerActive ? "navbar-menu is-active": "navbar-menu"}
                     >
                         <div className="navbar-end">
                             <a className="navbar-item" href="/">
-                                Home
+                                <span className="icon">
+                                    <i className="fas fa-home" />
+                                </span>
+                                <span>Home</span>
                             </a>
                             <a className="navbar-item" href="/">
-                                About
+                                <span className="icon">
+                                    <i className="fas fa-info-circle" />
+                                </span>
+                                <span>About</span>
                             </a>
                             <span className="navbar-item">
                             {this.props.input}
