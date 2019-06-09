@@ -23,8 +23,3 @@ chrome-user-data
 *.swp
 *.swo
 
-.next/
-scrapy-data/
-uRank.numbers
-static/data.json
-
