@@ -8,15 +8,40 @@ import Navbar from './components/Navbar'
 import './App.css';
 
 
-function App() {
-    return (
-        <div className="App">
-            <Navbar/>
-            <Header/>
-            <Body/>
-            <Footer/>
-        </div>
-    )
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            search: ''
+        };
+        this.handleNavSearch = this.handleNavSearch.bind(this);
+    }
+
+    handleNavSearch(event) {
+        this.setState({search: event.target.value});
+    }
+
+    render() {
+        const navSearch = (
+            <span className="field">
+            <div className="control has-icons-right">
+                <input className="input is-light is-rounded" type="email"
+                       placeholder="Search university" onChange={this.handleNavSearch}/>
+                <span className="icon is-right">
+                    <i className="fas fa-search" />
+                </span>
+            </div>
+        </span>);
+
+        return (
+            <div className="App">
+                <Navbar input={navSearch}/>
+                <Header/>
+                <Body search={this.state.search}/>
+                <Footer/>
+            </div>
+        )
+    }
 }
 
 export default App;

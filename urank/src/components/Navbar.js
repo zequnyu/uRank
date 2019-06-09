@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 import blackLogo from  '../static/nav1.png'
 
@@ -6,7 +7,7 @@ import 'bulma/css/bulma.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 
 
-function Navbar() {
+function Navbar(props) {
     return (
         <nav className="navbar is-light is-fixed-top">
             <div className="container">
@@ -29,18 +30,11 @@ function Navbar() {
                             About
                         </a>
                         <span className="navbar-item">
-                            <span className="field">
-                                <div className="control has-icons-right">
-                                    <input className="input is-light is-rounded" type="email"
-                                           placeholder="Search university" />
-                                    <span className="icon is-right">
-                                        <i className="fas fa-search" />
-                                    </span>
-                                </div>
-                            </span>
+                            {props.input}
                         </span>
                         <span className="navbar-item">
-                            <a className="button is-dark" href="https://github.com/zequnyu/urank">
+                            <a className="button is-dark" href="https://github.com/zequnyu/urank" target="_blank"
+                               rel="noopener noreferrer">
                                 <span className="icon">
                                     <i className="fab fa-github" />
                                 </span>
@@ -54,6 +48,8 @@ function Navbar() {
     );
 }
 
-Navbar.prototype = {};
+Navbar.propTypes = {
+    input: PropTypes.element
+};
 
 export default Navbar;

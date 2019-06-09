@@ -7,7 +7,7 @@ import 'bulma/css/bulma.min.css'
 
 function Header(props) {
     return (
-        <section className="hero is-primary is-medium">
+        <section className="hero is-dark is-medium">
             <div className="hero-body">
                 <div className="container">
                     <h1 className="title">

@@ -11,7 +11,8 @@ function Footer(props) {
         <footer className="footer">
             <div className="content has-text-centered">
                 <p>
-                    <img className="footerimg" src={blackLogo} alt="Black Logo" /> is developed with ❤️ by <a href="https://zequnyu.com">Zequn Yu</a>
+                    <img className="footerimg" src={blackLogo} alt="Black Logo" /> is developed with ❤️ by
+                    <a href="https://zequnyu.com" target="_blank" rel="noopener noreferrer"> Zequn Yu</a>
                 </p>
             </div>
         </footer>

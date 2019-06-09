@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Table from './Table'
 
@@ -9,13 +10,15 @@ function Body(props) {
         <section className="section">
             <div className="columns is-centered">
                 <div className="column is-three-quarters">
-                    <Table/>
+                    <Table search={props.search} />
                 </div>
             </div>
         </section>
     );
 }
 
-Body.prototype = {};
+Body.propTypes = {
+    search: PropTypes.string
+};
 
 export default Body;
