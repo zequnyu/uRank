@@ -3,7 +3,7 @@ import React from 'react';
 import blackLogo from  '../static/nav1.png'
 
 import 'bulma/css/bulma.min.css'
-import './Footer.css'
+import '../styles/Footer.css'
 
 
 function Footer(props) {

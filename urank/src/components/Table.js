@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import rawData from '../static/urank.json'
 
 import 'bulma/css/bulma.min.css'
-import './Table.css'
+import '../styles/Table.css'
 
 
 class Table extends React.Component {
@@ -39,8 +39,7 @@ class Table extends React.Component {
 
             if (allAve.length === 0) {
                 this.dataWithAve[i]['ave'] = -1
-            }
-            else {
+            } else {
                 this.dataWithAve[i]['ave'] = Table.roundToTwo(
                     allAve.reduce((t, c) => t + c, 0)*1.0/allAve.length);
             }
@@ -56,8 +55,7 @@ class Table extends React.Component {
 
         if (result.length === 0) {
             return -1
-        }
-        else {
+        } else {
             return Table.roundToTwo(
                 result.reduce((t, c) => t + c, 0)*1.0/result.length);
         }
