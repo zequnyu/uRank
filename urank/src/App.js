@@ -2,10 +2,7 @@ import React from 'react';
 
 import Body from  './components/Body'
 import Footer from './components/Footer'
-import Header from './components/Header'
 import Navbar from './components/Navbar'
-
-import './App.css';
 
 
 class App extends React.Component {
@@ -49,7 +46,8 @@ class App extends React.Component {
                 name="about"
                 className={this.state.page === 'about' ? "button is-light is-active" : "button is-light"}
                 href="/"
-                onClick={this.handlePageSwitch}
+                onClick={event => event.preventDefault()}
+                disabled
             >
                 <span className="icon">
                     <i className="fas fa-info-circle" />
@@ -81,7 +79,6 @@ class App extends React.Component {
                     about={navAbout}
                     input={navInput}
                 />
-                <Header/>
                 <Body search={this.state.search}/>
                 <Footer/>
             </div>
