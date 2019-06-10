@@ -43,30 +43,24 @@ class Navbar extends React.Component {
                          className={this.state.burgerActive ? "navbar-menu is-active": "navbar-menu"}
                     >
                         <div className="navbar-end">
-                            <a className="navbar-item" href="/">
-                                <span className="icon">
-                                    <i className="fas fa-home" />
-                                </span>
-                                <span>Home</span>
-                            </a>
-                            <a className="navbar-item" href="/">
-                                <span className="icon">
-                                    <i className="fas fa-info-circle" />
-                                </span>
-                                <span>About</span>
-                            </a>
                             <span className="navbar-item">
-                            {this.props.input}
-                        </span>
+                                {this.props.home}
+                            </span>
                             <span className="navbar-item">
-                            <a className="button is-dark" href="https://github.com/zequnyu/urank" target="_blank"
-                               rel="noopener noreferrer">
-                                <span className="icon">
-                                    <i className="fab fa-github" />
-                                </span>
-                                <span>Github</span>
-                            </a>
-                        </span>
+                                {this.props.about}
+                            </span>
+                            <span className="navbar-item">
+                                {this.props.input}
+                            </span>
+                            <span className="navbar-item">
+                                <a className="button is-dark" href="https://github.com/zequnyu/urank" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <span className="icon">
+                                        <i className="fab fa-github" />
+                                    </span>
+                                    <span>Github</span>
+                                </a>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -76,6 +70,8 @@ class Navbar extends React.Component {
 }
 
 Navbar.propTypes = {
+    home: PropTypes.element,
+    about: PropTypes.element,
     input: PropTypes.element
 };
 

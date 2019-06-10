@@ -12,9 +12,17 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            page: 'home',
             search: ''
         };
+        this.handlePageSwitch = this.handlePageSwitch.bind(this);
         this.handleNavSearch = this.handleNavSearch.bind(this);
+    }
+
+    handlePageSwitch(event) {
+        event.preventDefault();
+        this.setState( {page: event.currentTarget.name});
+
     }
 
     handleNavSearch(event) {
@@ -22,25 +30,62 @@ class App extends React.Component {
     }
 
     render() {
-        const navSearch = (
-            <span className="field">
-            <div className="control has-icons-right">
-                <input className="input is-light is-rounded" type="email"
-                       placeholder="Search university" onChange={this.handleNavSearch}/>
-                <span className="icon is-right">
-                    <i className="fas fa-search" />
+        const navHome = (
+            <a
+                name="home"
+                className={this.state.page === 'home' ? "button is-light is-active" : "button is-light"}
+                href="/"
+                onClick={this.handlePageSwitch}
+            >
+                <span className="icon">
+                    <i className="fas fa-home" />
                 </span>
-            </div>
-        </span>);
+                <span>Home</span>
+            </a>
+        );
+
+        const navAbout = (
+            <a
+                name="about"
+                className={this.state.page === 'about' ? "button is-light is-active" : "button is-light"}
+                href="/"
+                onClick={this.handlePageSwitch}
+            >
+                <span className="icon">
+                    <i className="fas fa-info-circle" />
+                </span>
+                <span>About</span>
+            </a>
+        );
+
+        const navInput = this.state.page === 'home' ? (
+            <span className="field">
+                <div className="control has-icons-right">
+                    <input
+                        className="input is-light is-rounded"
+                        placeholder="Search university"
+                        onChange={this.handleNavSearch}
+                        value={this.state.search}
+                    />
+                    <span className="icon is-right">
+                        <i className="fas fa-search" />
+                    </span>
+                </div>
+            </span>
+        ) : null;
 
         return (
             <div className="App">
-                <Navbar input={navSearch}/>
+                <Navbar
+                    home={navHome}
+                    about={navAbout}
+                    input={navInput}
+                />
                 <Header/>
                 <Body search={this.state.search}/>
                 <Footer/>
             </div>
-        )
+        );
     }
 }
 
