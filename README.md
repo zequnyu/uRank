@@ -1,6 +1,13 @@
-<h1 align="center">
-  uRank
-</h1>
+<p align="center">
+	<a href="https://urank.netlify.com">
+    	<img alt="uRank" src="urank/src/static/logo.png" width="120" />
+	</a>
+	<br />
+</p>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d322113a-ae2c-4533-b8f0-9f2b676ea3b1/deploy-status)](https://app.netlify.com/sites/urank/deploys)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+---
 
 #### Update Plan 
 
@@ -13,7 +20,7 @@
 
 ### Summary
 
-**uRank** is the all-in-one website to find rankings of your favourite global university, where you can find four most influential global rankings in the world:
+**[uRank](https://urank.netlify.com)** is the all-in-one website to find rankings of your favourite global university, where you can find four most influential global rankings in the world:
 
 - [QS](https://www.topuniversities.com) (*QS World University Rankings*)
 - [US News](https://www.usnews.com/education/best-global-universities) (*Best Global University Ranking*)
@@ -41,20 +48,22 @@ All the data was collected using Python Web Crawling Framework [Scrapy](https://
 * TO UPDATE: Charts supported by [Chart.js](https://www.chartjs.org)
 * CSS styled using [Bulma](https://bulma.io)
 
-### Background Image Source from [Unsplash](https://unsplash.com)
+### Background Image Source
 
-all.png: University of Cambridge, Cambridge, United Kingdom,
-	Photo by [Vadim Sherbakov](https://unsplash.com/@madebyvadim)
+Background images are from [Unsplash](https://unsplash.com).
 
-qs.png: Bus near Houses of Parliament, London, United Kingdom,
-	Photo by [David Dibert](https://unsplash.com/@dibert)
+- [all.png](urank/src/static/all.png): University of Cambridge, Cambridge, United Kingdom  
+Photo by [Vadim Sherbakov](https://unsplash.com/@madebyvadim)
 
-usnews.png: Times Square, New York, United States,
-	Photo by [Andrae Ricketts](https://unsplash.com/@drezart)
+- [qs.png](urank/src/static/qs.png): Bus near Houses of Parliament, London, United Kingdom  
+Photo by [David Dibert](https://unsplash.com/@dibert)
 
-times.png: The View from The Shard, London, United Kingdom,
-	Photo by [Benjamin Davies](https://unsplash.com/@bendavisual)
+- [usnews.png](urank/src/static/usnews.png): Times Square, New York, United States  
+Photo by [Andrae Ricketts](https://unsplash.com/@drezart)
 
-arwu.png: Shanghai Bund, Shanghai, China,
-	Photo by [Edward He](https://unsplash.com/@bingham008)
+- [times.png](urank/src/static/times.png): The View from The Shard, London, United Kingdom  
+Photo by [Benjamin Davies](https://unsplash.com/@bendavisual)
+
+- [arwu.png](urank/src/static/arwu.png): Shanghai Bund, Shanghai, China  
+Photo by [Edward He](https://unsplash.com/@bingham008)
   
