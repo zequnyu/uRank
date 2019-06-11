@@ -79,7 +79,12 @@ class App extends React.Component {
                     about={navAbout}
                     input={navInput}
                 />
-                <Body search={this.state.search}/>
+                {/*
+                    You Probably Don't Need Derived State
+                    June 07, 2018 by Brian Vaughn
+                    `https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html`
+                */}
+                <Body search={this.state.search} key={this.state.search} />
                 <Footer/>
             </div>
         );

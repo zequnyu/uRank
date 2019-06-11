@@ -6,6 +6,7 @@ import qsBg from '../static/qs.png'
 import usnewsBg from '../static/usnews.png'
 import timesBg from '../static/times.png'
 import arwuBg from '../static/arwu.png'
+import allBg from '../static/all.png'
 
 import 'bulma/css/bulma.min.css'
 
@@ -26,15 +27,14 @@ function Header(props) {
             bg = arwuBg;
             break;
         default:
-            bg = null;
+            bg = allBg;
     }
     let bgStyles = {
-        background: `url(${bg}) no-repeat center center fixed`,
-        backgroundSize: `cover`
+        background: `url(${bg}) center center / cover no-repeat fixed`,
     };
 
     if (props.ranking === 'all') {
-        rankingInfo = 'QS, US News, Times, ARWU ranking in '
+        rankingInfo = 'average of qs, usnews, times, arwu ranking in '
     } else {
         rankingInfo = props.ranking + ' ranking in '
     }
