@@ -1,0 +1,4 @@
+[build]
+base = "urank/"
+publish = "urank/build/"
+command = "npm run build"
