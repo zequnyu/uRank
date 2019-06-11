@@ -2,4 +2,12 @@
     .title {
         margin-top: 25px;
     }
+
+    .level-left {
+        margin: auto auto -25px;
+    }
+
+    #table-section {
+        margin-top: -25px;
+    }
 }

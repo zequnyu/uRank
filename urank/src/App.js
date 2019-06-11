@@ -4,6 +4,8 @@ import Body from  './components/Body'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 
+import 'bulma/css/bulma.min.css'
+
 
 class App extends React.Component {
     constructor(props) {
@@ -18,7 +20,7 @@ class App extends React.Component {
 
     handlePageSwitch(event) {
         event.preventDefault();
-        this.setState( {page: event.currentTarget.name});
+        this.setState( {page: event.currentTarget.id});
 
     }
 
@@ -29,7 +31,7 @@ class App extends React.Component {
     render() {
         const navHome = (
             <a
-                name="home"
+                id="home"
                 className={this.state.page === 'home' ? "button is-light is-active" : "button is-light"}
                 href="/"
                 onClick={this.handlePageSwitch}
@@ -43,7 +45,7 @@ class App extends React.Component {
 
         const navAbout = (
             <a
-                name="about"
+                id="about"
                 className={this.state.page === 'about' ? "button is-light is-active" : "button is-light"}
                 href="/"
                 onClick={event => event.preventDefault()}

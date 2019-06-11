@@ -118,7 +118,7 @@ class Body extends React.Component {
         let itemPerPage;
 
         this.dataAfterFilter = this.dataWithAve.filter(
-            item => item.name.toLowerCase().includes(this.props.search));
+            item => item.name.toLowerCase().includes(this.props.search.toLowerCase()));
 
         if (this.state.perpage === '50') {
             itemPerPage = 50;
@@ -164,7 +164,7 @@ class Body extends React.Component {
                                         />
                                     </div>
                                 </div>
-                                <div className="level-right">
+                                <div className="level-right is-hidden-mobile">
                                     <div className="level-item">
                                         {this.state.pageindex > 1 ?
                                             <button
@@ -200,7 +200,7 @@ class Body extends React.Component {
                         </div>
                     </div>
                 </section>
-                <section className="section">
+                <section className="section" id="table-section">
                     <div className="columns is-centered">
                         <div className="column is-three-quarters">
                             <Table

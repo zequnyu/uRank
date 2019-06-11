@@ -34,7 +34,7 @@ function Table(props) {
                 <th>Index</th>
                 <th>Name</th>
                 <th>Rank</th>
-                <th>Region</th>
+                <th className="is-hidden-mobile">Region</th>
             </tr>
             </thead>
             <tbody>
@@ -43,7 +43,7 @@ function Table(props) {
                     <td>{index+startIndex+1}</td>
                     <td>{item.name}</td>
                     <td>{item[rankSelection] === -1 ? 'NA' : item[rankSelection]}</td>
-                    <td>{item.region}</td>
+                    <td className="is-hidden-mobile">{item.region}</td>
                 </tr>
             ))}
             </tbody>
