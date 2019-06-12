@@ -1,0 +1,10 @@
+export const c1 = 'rgba(28, 72, 142)';
+export const c1bg = 'rgba(28, 72, 142, 0.2)';
+export const c2 = 'rgba(244, 204, 112)';
+export const c2bg = 'rgba(244, 204, 112, 0.2)';
+export const c3 = 'rgba(249, 59, 72)';
+export const c3bg = 'rgba(249, 59, 72, 0.2)';
+export const c4 = 'rgba(152, 90, 226)';
+export const c4bg = 'rgba(152, 90, 226, 0.2)';
+export const c5 = 'rgba(87, 186, 55)';
+export const c5bg = 'rgba(87, 186, 55, 0.2)';
