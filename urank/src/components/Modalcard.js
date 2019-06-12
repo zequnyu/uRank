@@ -107,7 +107,7 @@ class Modalcard extends React.Component {
                     }
                 },
                 legend: {
-                    position: 'left',
+                    position: 'top',
                     onClick: this.updateSelectedYears
                 }
             }
@@ -146,6 +146,7 @@ class Modalcard extends React.Component {
                         </div>
                         <div className="container">
                             <canvas ref={node => this.lineNode = node}/>
+                            <hr />
                         </div>
                         <div className="container">
                             <canvas ref={node => this.radarNode = node}/>

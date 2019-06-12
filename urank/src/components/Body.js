@@ -130,7 +130,11 @@ class Body extends React.Component {
         let itemPerPage, modalData;
 
         this.dataAfterFilter = this.dataWithAve.filter(
-            item => item.name.toLowerCase().includes(this.props.search.toLowerCase()));
+            item => (
+                item.name.toLowerCase().includes(this.props.search.toLowerCase()) ||
+                item.region.toLowerCase().includes(this.props.search.toLowerCase())
+            )
+        );
 
         if (this.state.perPage === '50') {
             itemPerPage = 50;
