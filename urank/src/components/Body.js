@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Table from './Table'
 import Dropdown from './Dropdown'
 import Header from './Header'
+import Modalcard from './Modalcard'
+import Table from './Table'
 
 import rawData from '../static/urank.json'
 
@@ -21,13 +22,16 @@ class Body extends React.Component {
         this.state = {
             ranking: 'all',
             year: 'all',
-            pageindex: 1,
-            pagetotal: 1,
-            perpage: 'all',
+            pageIndex: 1,
+            pageTotal: 1,
+            perPage: 'all',
+            activeModal: ''
         };
         this.handleDropDownChange = this.handleDropDownChange.bind(this);
         this.handlePageIndexIncrease = this.handlePageIndexIncrease.bind(this);
         this.handlePageIndexDecrease = this.handlePageIndexDecrease.bind(this);
+        this.handleModalOpen = this.handleModalOpen.bind(this);
+        this.handleModalClose = this.handleModalClose.bind(this);
     }
 
     static roundToTwo(num) {
@@ -83,50 +87,62 @@ class Body extends React.Component {
         } else if (event.target.title === 'Year') {
             this.setState({year: event.target.name});
         } else {
-            this.setState({perpage: event.target.name});
+            this.setState({perPage: event.target.name});
 
             if (event.target.name === '50') {
-                this.setState({pagetotal: Math.ceil(this.dataAfterFilter.length / 50)});
+                this.setState({pageTotal: Math.ceil(this.dataAfterFilter.length / 50)});
             } else if (event.target.name === '25') {
-                this.setState({pagetotal: Math.ceil(this.dataAfterFilter.length / 25)});
+                this.setState({pageTotal: Math.ceil(this.dataAfterFilter.length / 25)});
             } else {
-                this.setState({pagetotal: 1});
+                this.setState({pageTotal: 1});
             }
         }
-        this.setState({pageindex: 1});
+        this.setState({pageIndex: 1});
     }
 
     handlePageIndexIncrease(event) {
         event.preventDefault();
-        let index = this.state.pageindex;
+        let index = this.state.pageIndex;
 
-        if (index < this.state.pagetotal) {
-            this.setState({pageindex: index + 1});
+        if (index < this.state.pageTotal) {
+            this.setState({pageIndex: index + 1});
         }
     }
 
     handlePageIndexDecrease(event) {
         event.preventDefault();
-        let index = this.state.pageindex;
+        let index = this.state.pageIndex;
 
         if (index > 1) {
-            this.setState({pageindex: index - 1});
+            this.setState({pageIndex: index - 1});
         }
     }
 
+    handleModalOpen(event) {
+        this.setState({activeModal: event.currentTarget.id});
+    }
+
+    handleModalClose(event) {
+        this.setState({activeModal: ''});
+    }
+
     render() {
-        let itemPerPage;
+        let itemPerPage, modalData;
 
         this.dataAfterFilter = this.dataWithAve.filter(
             item => item.name.toLowerCase().includes(this.props.search.toLowerCase()));
 
-        if (this.state.perpage === '50') {
+        if (this.state.perPage === '50') {
             itemPerPage = 50;
-        } else if (this.state.perpage === '25') {
+        } else if (this.state.perPage === '25') {
             itemPerPage = 25;
         } else {
             itemPerPage = this.dataAfterFilter.length;
         }
+
+        // Set single item data pass to modal
+        // Return `undefined` when no modal is active
+        modalData = this.dataAfterFilter.find(x => x.id.toString() === this.state.activeModal);
 
         return (
             <div>
@@ -166,7 +182,7 @@ class Body extends React.Component {
                                 </div>
                                 <div className="level-right is-hidden-mobile">
                                     <div className="level-item">
-                                        {this.state.pageindex > 1 ?
+                                        {this.state.pageIndex > 1 ?
                                             <button
                                                 className="button is-light"
                                                 onClick={this.handlePageIndexDecrease}
@@ -174,8 +190,8 @@ class Body extends React.Component {
                                             </button> :
                                             <button className="button is-light" disabled>&lt;</button>
                                         }
-                                        <span>{this.state.pageindex} / {this.state.pagetotal}</span>
-                                        {this.state.pageindex < this.state.pagetotal ?
+                                        <span>{this.state.pageIndex} / {this.state.pageTotal}</span>
+                                        {this.state.pageIndex < this.state.pageTotal ?
                                             <button
                                                 className="button is-light"
                                                 onClick={this.handlePageIndexIncrease}
@@ -191,7 +207,7 @@ class Body extends React.Component {
                                                 '50': '50',
                                                 '25': '25'
                                             }}
-                                            active={this.state.perpage}
+                                            active={this.state.perPage}
                                             onItemChange={this.handleDropDownChange}
                                         />
                                     </div>
@@ -207,11 +223,20 @@ class Body extends React.Component {
                                 data={this.dataAfterFilter}
                                 year={this.state.year}
                                 ranking={this.state.ranking}
-                                index={this.state.pageindex}
-                                perpage={itemPerPage}
+                                index={this.state.pageIndex}
+                                perPage={itemPerPage}
+                                onModalOpen={this.handleModalOpen}
                             />
                         </div>
                     </div>
+                </section>
+                <section className="section">
+                    {this.state.activeModal === '' ? null :
+                        <Modalcard
+                            data={modalData}
+                            onModalClose={this.handleModalClose}
+                        />
+                    }
                 </section>
             </div>
         );

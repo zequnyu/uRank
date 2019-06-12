@@ -6,10 +6,10 @@ import 'bulma/css/bulma.min.css'
 class Dropdown extends React.Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        this.handleHomeAndAboutClick = this.handleHomeAndAboutClick.bind(this);
     }
 
-    handleClick(event) {
+    handleHomeAndAboutClick(event) {
         event.preventDefault();
         this.props.onItemChange(event);
     }
@@ -37,7 +37,7 @@ class Dropdown extends React.Component {
                             className={this.props.active === 'all' ? "dropdown-item is-active" : "dropdown-item"}
                             name="all"
                             title={this.props.title}
-                            onClick={this.handleClick}>
+                            onClick={this.handleHomeAndAboutClick}>
                                 All
                         </a>
                         <hr className="dropdown-divider" />
@@ -48,7 +48,7 @@ class Dropdown extends React.Component {
                                 key={key}
                                 name={key}
                                 title={this.props.title}
-                                onClick={this.handleClick}
+                                onClick={this.handleHomeAndAboutClick}
                             >
                                 {items[key]}
                             </a>
