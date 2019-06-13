@@ -1,22 +1,12 @@
 <p align="center">
-	<a href="https://urank.netlify.com">
-    	<img alt="uRank" src="urank/src/static/logo.png" width="120" />
-	</a>
-	<br />
+    <a href="https://urank.netlify.com">
+        <img alt="uRank" src="urank/src/static/logo.png" width="120" />
+    </a>
 </p>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d322113a-ae2c-4533-b8f0-9f2b676ea3b1/deploy-status)](https://app.netlify.com/sites/urank/deploys)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ---
-
-#### Update Plan 
-
-- [x] Change the framework to create-react-app.
-- [x] Change the domain to Netlify.
-- [x] Improve UI using Bulma.
-- [ ] Finish up the Analysis part with new UI
-- [ ] Add more universities to the DB (now 150 target 200)
-
 
 #### Summary
 
@@ -59,4 +49,11 @@ Background images are from [Unsplash](https://unsplash.com).
 - [times.png](urank/src/static/times.png): The View from The Shard, London, United Kingdom. By [Benjamin Davies](https://unsplash.com/@bendavisual)
 
 - [arwu.png](urank/src/static/arwu.png): Shanghai Bund, Shanghai, China. By [Edward He](https://unsplash.com/@bingham008)
-  
+
+#### Update Plan
+
+- [x] Change the framework to create-react-app.
+- [x] Change the domain to Netlify.
+- [x] Improve UI using Bulma.
+- [x] Finish up the Analysis part with new UI
+- [ ] Add more universities to the DB (150 => 200)

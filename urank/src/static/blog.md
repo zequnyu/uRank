@@ -1,0 +1,15 @@
+I have this blog to record what I intend to do with [uRank](https://urank.netlify.com). Essentially I’m recalling some feelings that I can think of and want to write it down during the process. At the very beginning uRank is intended to be a useful tool, and I’m happy if anyone want to know more behind it.
+
+We all know there are many university rankings today. Institutions publish their ranking every year based on their criteria and people regard it as an important factor to evaluate a university. You probably saw one university stating themselves as world’s top 100 according to some ranking, while in the same time it goes far beyond 100 in another ranking. It’s hard to make judgement on a single ranking. 
+
+Few years ago, I happened to see a screenshot chart of several different rankings. It is no fancy than a simple average ranking chart, but surprisingly I found the universities at the top of that list pretty reliable, in a way that it matched with my own impression so well.
+
+The list was only one year data, and contained about 100 universities. So I started to think of extending this to a project, which could provide more accurate data of more universities. So has anyone done something before? After a bit of search, I found literately no similar project existing.
+
+So I decided to create it: a dataset and a website to virtualize it. Fortunately I had some experiences with using Python [Scrapy](https://scrapy.org), so everything went well with the raw data. The biggest challenge is to unify the university name from different rankings. What’s worse is that it seems some really good universities from Europe always change their name. I would like to thank the author of [fuzzywuzzy](https://github.com/seatgeek/fuzzywuzzy) who did some great code to help reducing my work. But at the end I still had to clean and check many records manually to make sure they correctly matched. Yes, data is usually dirty in real world. But hopefully data at uRank is clean, because every number is checked by myself.
+
+I also want to talk a little bit of React frameworks. Nowadays you have popular options like [Gatsby](https://github.com/gatsbyjs/gatsby), [Next](https://github.com/zeit/next.js) and [create-react-app](https://github.com/facebook/create-react-app). During the process I tried them all. I would recommend Next as the first one to learn, if you are pretty new to React. It keeps simplicity and has a nice introductory tutorial. But the now.sh performance is disastrous. So keep in mind to deploy your website to somewhere else, lol.
+
+Through the years I always want to create things to be useful. I hope uRank could be the one to help people to some extend. But I do want to stress here, that university ranking is far less important than many people think it would to be. A university has many more categories (location, fees, professors, etc.) to be considered as how “good” it is. So don’t take it too seriously!
+
+Finally, I've made this project completely open sourced under [GPL-3.0](https://github.com/zequnyu/uRank/blob/master/LICENSE). If you are interested in reusing the code, go check it at Github for more. Thank you!

@@ -10,7 +10,7 @@ function Footer(props) {
     return (
         <footer className="footer">
             <div className="content has-text-centered">
-                <p>
+                <p className="is-size-5">
                     <img className="footer-img" src={blackLogo} alt="Black Logo" /> is developed with ❤️ by
                     <a href="https://zequnyu.com" target="_blank" rel="noopener noreferrer"> Zequn Yu</a>
                 </p>
@@ -19,6 +19,6 @@ function Footer(props) {
     );
 }
 
-Footer.prototype = {};
+Footer.propTypes = {};
 
 export default Footer;

@@ -1,6 +1,5 @@
 .table {
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
 
 .clickable-tr:hover {
