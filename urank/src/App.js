@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Blog from './components/Blog'
 import Body from  './components/Body'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
@@ -48,8 +49,7 @@ class App extends React.Component {
                 id="about"
                 className={this.state.page === 'about' ? "button is-light is-active" : "button is-light"}
                 href="/"
-                onClick={event => event.preventDefault()}
-                disabled
+                onClick={this.handlePageSwitch}
             >
                 <span className="icon">
                     <i className="fas fa-info-circle" />
@@ -86,7 +86,8 @@ class App extends React.Component {
                     June 07, 2018 by Brian Vaughn
                     `https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html`
                 */}
-                <Body search={this.state.search} key={this.state.search} />
+                {this.state.page === 'home' ? <Body search={this.state.search} key={this.state.search} /> : null}
+                {this.state.page === 'about' ? <Blog /> : null}
                 <Footer/>
             </div>
         );

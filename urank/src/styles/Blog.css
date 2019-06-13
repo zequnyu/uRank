@@ -1,0 +1,30 @@
+#logo-at-title {
+    display: inline-block;
+    height: 38px;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+#article-box {
+    margin: -80px auto auto;
+    text-align: justify;
+}
+
+h1 {
+    font-family: 'PT Sans Narrow', serif;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+p {
+    font-family: 'PT Sans', serif;
+    font-size: 20px;
+    line-height: 32px;
+    padding: 24px;
+}
+
+@media screen and (max-width: 767px) {
+    p {
+        font-size: 16px;
+    }
+}
