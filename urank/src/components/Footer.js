@@ -10,7 +10,7 @@ function Footer(props) {
     return (
         <footer className="footer">
             <div className="content has-text-centered">
-                <p className="is-size-5">
+                <p className="is-size-5 is-size-6-mobile">
                     <img className="footer-img" src={blackLogo} alt="Black Logo" /> is developed with ❤️ by
                     <a href="https://zequnyu.com" target="_blank" rel="noopener noreferrer"> Zequn Yu</a>
                 </p>
