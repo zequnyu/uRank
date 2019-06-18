@@ -19,12 +19,19 @@ class Body extends React.Component {
         this.dataWithAve = Array.from(rawData);
         this.initialiseData();
 
+        this.dataAfterFilter = this.dataWithAve.filter(
+            item => (
+                item.name.toLowerCase().includes(this.props.search.toLowerCase()) ||
+                item.region.toLowerCase().includes(this.props.search.toLowerCase())
+            )
+        );
+
         this.state = {
             ranking: 'all',
             year: 'all',
             pageIndex: 1,
-            pageTotal: 1,
-            perPage: 'all',
+            pageTotal: Math.ceil(this.dataAfterFilter.length / 25),
+            perPage: '25',
             activeModal: ''
         };
         this.handleDropDownChange = this.handleDropDownChange.bind(this);
@@ -128,13 +135,6 @@ class Body extends React.Component {
 
     render() {
         let itemPerPage, modalData;
-
-        this.dataAfterFilter = this.dataWithAve.filter(
-            item => (
-                item.name.toLowerCase().includes(this.props.search.toLowerCase()) ||
-                item.region.toLowerCase().includes(this.props.search.toLowerCase())
-            )
-        );
 
         if (this.state.perPage === '50') {
             itemPerPage = 50;

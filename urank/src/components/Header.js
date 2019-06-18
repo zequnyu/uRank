@@ -47,7 +47,7 @@ function Header(props) {
 
     return(
         <section
-            className="hero is-dark is-large"
+            className="hero is-dark is-medium"
             style={bg === null ? null : bgStyles}
         >
             <div className="hero-body">

@@ -11,13 +11,11 @@
 }
 
 h1 {
-    font-family: 'PT Sans', serif;
     letter-spacing: 5px;
     text-transform: uppercase;
 }
 
 p {
-    font-family: 'PT Sans', serif;
     font-size: 20px;
     line-height: 32px;
     padding: 24px;
