@@ -3,6 +3,7 @@
         <img alt="uRank" src="urank/src/static/logo.png" width="125" />
     </a>
 </p>
+
 <p align="center">
     <a href="https://app.netlify.com/sites/urank/deploys">
         <img src="https://api.netlify.com/api/v1/badges/d322113a-ae2c-4533-b8f0-9f2b676ea3b1/deploy-status" alt="Netlify Status" />
@@ -12,7 +13,6 @@
     </a>
 </p>
 
----
 #### Summary
 
 **[uRank](https://urank.netlify.com)** is the all-in-one website to find rankings of your favourite global university, where you can find four most influential global rankings in the world:
