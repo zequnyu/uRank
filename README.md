@@ -36,7 +36,7 @@ All the data was collected using Python Web Crawling Framework [Scrapy](https://
 #### Technology Stack Outline
 
 * Fully written in [React.js](https://reactjs.org) using [create-react-app](https://github.com/facebook/create-react-app)
-* TO UPDATE: Charts supported by [Chart.js](https://www.chartjs.org)
+* Charts supported by [Chart.js](https://www.chartjs.org)
 * CSS styled using [Bulma](https://bulma.io)
 
 #### Background Image Source
